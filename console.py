@@ -6,6 +6,7 @@ Module that implements the HBNBCommand class which inherits from the Cmd class f
 import re
 from shlex import split
 import cmd
+from models.user import User
 import models
 from models import storage
 from models.base_model import BaseModel
@@ -36,7 +37,8 @@ class HBNBCommand(cmd.Cmd):
         
     prompt = '(hbnb) '
     __classes = {
-        "BaseModel"
+        "BaseModel",
+        "User"
     }
     """
     The prompt to be displayed in the command line interface.
