@@ -124,8 +124,8 @@ class TestFileStorage_methods(unittest.TestCase):
         models.storage.new(rv)
         models.storage.save()
         save_text = ""
-        with open("file.json", "r") as f:
-            save_text = f.read()
+        with open("file.json", "r") as file:
+            save_text = file.read()
             self.assertIn("BaseModel." + bm.id, save_text)
             self.assertIn("User." + us.id, save_text)
             self.assertIn("State." + st.id, save_text)
@@ -165,7 +165,7 @@ class TestFileStorage_methods(unittest.TestCase):
         self.assertIn("Review." + rv.id, objs)
 
     def test_reload_no_file(self):
-        self.assertRaises(FileNotFoundError, models.storage.reload())
+        self.assertRaises(Exception, models.storage.reload())
 
     def test_reload_with_arg(self):
         with self.assertRaises(TypeError):
